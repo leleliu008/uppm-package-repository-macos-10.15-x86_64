@@ -1,0 +1,41 @@
+name: publish
+
+on:
+  workflow_dispatch
+
+jobs:
+  publish:
+    runs-on: macos-10.15
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PKG_NAMES: aria2 axel bash bat bison bmake bzip2 cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix ed file findutils flex gawk git glow gm4 gmake gnupg gh gn gogs gotop gotty gperf grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty pigz qpdf quickjs rtmpdump sqlite starship tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd base16 base64 sysinfo easyutils
+
+    steps:
+      - run: brew uninstall go@1.17
+      - run: brew update
+      - run: brew install --overwrite python@3.10 python@3.11
+
+      - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
+      - run: chmod a+x xcpkg
+      - run: ./xcpkg setup
+      - run: ./xcpkg update
+      - run: |
+          for PKG_NAME in $PKG_NAMES
+          do
+            ./xcpkg install "MacOSX/10.15/x86_64/$PKG_NAME" --link-type=static-prefered --install-lib=static
+            ./xcpkg pack    "MacOSX/10.15/x86_64/$PKG_NAME"
+          done
+
+      - run: |
+          cd ~/.xcpkg/packed
+          sha256sum *.tar.xz > sha256sums.txt
+          printf 'sha256sum:\n```\n%s\n```\n' "$(cat sha256sums.txt)" >> notes.md
+
+          TAGNAME="$(date +%Y.%m.%d)"
+
+          # to avaid: failed to run git: fatal: not a git repository (or any of the parent directories): .git
+          git -c init.defaultBranch=master init
+          git remote add origin ${{ github.repositoryUrl }}
+
+          gh release create "$TAGNAME" *.tar.xz sha256sums.txt --title "$TAGNAME" --notes-file notes.md

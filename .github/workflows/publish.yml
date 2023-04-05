@@ -9,13 +9,9 @@ jobs:
 
     env:
       GH_TOKEN: ${{ github.token }}
-      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix ed file findutils flex fzf gawk git glow gm4 gmake gnupg gh gn gogs gotop gotty gperf grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty pigz qpdf quickjs rtmpdump sqlite starship tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd base16 base64 sysinfo easyutils
+      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk git glow gm4 gmake gnupg gh gn gogs gotop gotty gperf grpc grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty pigz qpdf qrencode quickjs re2c rtmpdump sqlite starship svn-lite tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd base16 base64 sysinfo easyutils
 
     steps:
-      - run: brew uninstall go@1.17
-      - run: brew update
-      - run: brew install --overwrite python@3.10 python@3.11
-
       - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
       - run: chmod a+x xcpkg
       - run: ./xcpkg setup
@@ -29,10 +25,69 @@ jobs:
 
       - run: |
           cd ~/.xcpkg/packed
-          sha256sum *.tar.xz > sha256sums.txt
-          printf 'sha256sum:\n```\n%s\n```\n' "$(cat sha256sums.txt)" >> notes.md
 
-          TAGNAME="$(date +%Y.%m.%d)"
+          date +%Y.%m.%d > ts.txt
+
+          TAGNAME="$(cat ts.txt)"
+
+          UPPM_FORMULA_ROOT_DIR="uppm-formula-repository-macos10.15-x86_64-$TAGNAME"
+          UPPM_FORMULA_DIR="$UPPM_FORMULA_ROOT_DIR/formula"
+
+          install -d "$UPPM_FORMULA_DIR"
+
+          for PACKAGE_NAME in $PKG_NAMES
+          do
+              PACKAGE_SUMMARY="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" summary)"
+              PACKAGE_WEB_URL="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" web-url)"
+              PACKAGE_VERSION="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" version)"
+
+              PACKAGE_BIN_FILENAME="$PACKAGE_NAME-$PACKAGE_VERSION-macos10.15-x86_64.tar.xz"
+
+              PACKAGE_BIN_SHA=$(sha256sum "$PACKAGE_BIN_FILENAME" | cut -d ' ' -f1)
+
+              PACKAGE_BIN_URL="https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/${TAGNAME}/${PACKAGE_BIN_FILENAME}"
+
+              cat > "$UPPM_FORMULA_DIR/$PACKAGE_NAME.yml" <<EOF
+          summary: $PACKAGE_SUMMARY
+          webpage: $PACKAGE_WEB_URL
+          version: $PACKAGE_VERSION
+          bin-url: $PACKAGE_BIN_URL
+          bin-sha: $PACKAGE_BIN_SHA
+          EOF
+          done
+
+          tar cvJf "$UPPM_FORMULA_ROOT_DIR.tar.xz" "$UPPM_FORMULA_ROOT_DIR"
+
+          sha256sum *.tar.xz > sha256sums.txt
+
+          cat > notes.md <<EOF
+          these packages are created by [xcpkg](https://github.com/leleliu008/xcpkg).
+
+          these packages have no dependencies other than \`/usr/lib/lib*.dylib\` and \`/System/Library/Frameworks/*.framework\`.
+
+          these packages are relocatable which means that you can install them to anywhere.
+
+          ## Environment Variables
+
+          **following environment variables should be set for \`git\` package**
+
+          \`\`\`bash
+          export GIT_EXEC_PATH="\$GIT_INSTALL_DIR/libexec/git-core"
+          export GIT_TEMPLATE_DIR="\$GIT_INSTALL_DIR/share/git-core/templates"
+          \`\`\`
+
+          **following environment variables should be set for \`file\` package**
+
+          \`\`\`bash
+          export MAGIC="\$FILE_INSTALL_DIR/share/misc/magic.mgc"
+          \`\`\`
+
+          ## sha256sum
+
+          \`\`\`
+          $(cat sha256sums.txt)
+          \`\`\`
+          EOF
 
           # to avaid: failed to run git: fatal: not a git repository (or any of the parent directories): .git
           git -c init.defaultBranch=master init

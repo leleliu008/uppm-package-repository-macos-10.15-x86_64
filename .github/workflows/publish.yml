@@ -9,7 +9,8 @@ jobs:
 
     env:
       GH_TOKEN: ${{ github.token }}
-      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk git glow gm4 gmake gnupg gh gn gogs gotop gotty gperf grpc grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty pigz qpdf qrencode quickjs re2c rtmpdump sqlite starship svn-lite tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd base16 base64 sysinfo easyutils
+      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk gettext glow gm4 gmake gnupg gh gn git gogs gotop gotty gperf grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty protobuf pigz qpdf qrencode quickjs re2c rtmpdump sqlite starship svn-lite tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd base16 base64 sysinfo easyutils
+      PLATFORM_VERSION: '11.0'
 
     steps:
       - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
@@ -19,8 +20,8 @@ jobs:
       - run: |
           for PKG_NAME in $PKG_NAMES
           do
-            ./xcpkg install "MacOSX/10.15/x86_64/$PKG_NAME" --link-type=static-prefered --install-lib=static
-            ./xcpkg pack    "MacOSX/10.15/x86_64/$PKG_NAME"
+            ./xcpkg install "MacOSX/$PLATFORM_VERSION/x86_64/$PKG_NAME" --link-type=static-prefered --install-lib=static
+            ./xcpkg pack    "MacOSX/$PLATFORM_VERSION/x86_64/$PKG_NAME"
           done
 
       - run: |
@@ -30,7 +31,7 @@ jobs:
 
           TAGNAME="$(cat ts.txt)"
 
-          UPPM_FORMULA_ROOT_DIR="uppm-formula-repository-macos10.15-x86_64-$TAGNAME"
+          UPPM_FORMULA_ROOT_DIR="uppm-formula-repository-macos$PLATFORM_VERSION-x86_64-$TAGNAME"
           UPPM_FORMULA_DIR="$UPPM_FORMULA_ROOT_DIR/formula"
 
           install -d "$UPPM_FORMULA_DIR"
@@ -41,11 +42,11 @@ jobs:
               PACKAGE_WEB_URL="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" web-url)"
               PACKAGE_VERSION="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" version)"
 
-              PACKAGE_BIN_FILENAME="$PACKAGE_NAME-$PACKAGE_VERSION-macos10.15-x86_64.tar.xz"
+              PACKAGE_BIN_FILENAME="$PACKAGE_NAME-$PACKAGE_VERSION-macos$PLATFORM_VERSION-x86_64.tar.xz"
 
-              PACKAGE_BIN_SHA=$(sha256sum "$PACKAGE_BIN_FILENAME" | cut -d ' ' -f1)
+              PACKAGE_BIN_SHA=$(~/.uppm/installed/coreutils/bin/sha256sum "$PACKAGE_BIN_FILENAME" | cut -d ' ' -f1)
 
-              PACKAGE_BIN_URL="https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/${TAGNAME}/${PACKAGE_BIN_FILENAME}"
+              PACKAGE_BIN_URL="https://github.com/leleliu008/uppm-package-repository-macos$PLATFORM_VERSION-x86_64/releases/download/${TAGNAME}/${PACKAGE_BIN_FILENAME}"
 
               cat > "$UPPM_FORMULA_DIR/$PACKAGE_NAME.yml" <<EOF
           summary: $PACKAGE_SUMMARY
@@ -58,7 +59,7 @@ jobs:
 
           tar cvJf "$UPPM_FORMULA_ROOT_DIR.tar.xz" "$UPPM_FORMULA_ROOT_DIR"
 
-          sha256sum *.tar.xz > sha256sums.txt
+          ~/.uppm/installed/coreutils/bin/sha256sum *.tar.xz > sha256sums.txt
 
           cat > notes.md <<EOF
           these packages are created by [xcpkg](https://github.com/leleliu008/xcpkg).

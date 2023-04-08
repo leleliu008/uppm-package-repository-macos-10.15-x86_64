@@ -38,9 +38,9 @@ jobs:
 
           for PACKAGE_NAME in $PKG_NAMES
           do
-              PACKAGE_SUMMARY="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" summary)"
-              PACKAGE_WEB_URL="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" web-url)"
-              PACKAGE_VERSION="$(${{ github.workspace }}/xcpkg info "$PACKAGE_NAME" version)"
+              PACKAGE_SUMMARY="$("${HOME}/.uppm/installed/yq/bin/yq" .summary "${HOME}/.xcpkg/installed/${PACKAGE_NAME}/.xcpkg/receipt.yml")"
+              PACKAGE_WEB_URL="$("${HOME}/.uppm/installed/yq/bin/yq" .web-url "${HOME}/.xcpkg/installed/${PACKAGE_NAME}/.xcpkg/receipt.yml")"
+              PACKAGE_VERSION="$("${HOME}/.uppm/installed/yq/bin/yq" .version "${HOME}/.xcpkg/installed/${PACKAGE_NAME}/.xcpkg/receipt.yml")"
 
               PACKAGE_BIN_FILENAME="$PACKAGE_NAME-$PACKAGE_VERSION-macos$PLATFORM_VERSION-x86_64.tar.xz"
 

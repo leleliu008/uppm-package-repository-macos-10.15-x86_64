@@ -9,7 +9,7 @@ jobs:
 
     env:
       GH_TOKEN: ${{ github.token }}
-      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk gettext glow gm4 gmake gnupg gh gn git gogs gotop gotty gperf grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty protobuf pigz qpdf qrencode quickjs re2c rtmpdump sqlite starship svn-lite tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zip p7zip zstd zsync rsync base16 base64 sysinfo easyutils
+      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk gettext glow gm4 gmake gnupg gh gn git gogs gotop gotty gperf grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty protobuf pigz qpdf qrencode quickjs re2c rtmpdump sqlite starship svn-lite tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zoxide zip p7zip zstd zsync rsync base16 base64 sysinfo easyutils
       PLATFORM_VERSION: '10.15'
 
     steps:

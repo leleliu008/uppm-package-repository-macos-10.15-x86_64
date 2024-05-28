@@ -1,0 +1,5 @@
+summary: Next generation open source RPC library and framework
+webpage: https://grpc.io
+version: 1.53.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/grpc-plugins-1.53.0-macos10.15-x86_64.tar.xz
+bin-sha: 1cd14484fde926c2c98ace7ec4ee07b5b989c7aee342428a8b8d6a842a2661fe

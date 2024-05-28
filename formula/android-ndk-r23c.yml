@@ -1,0 +1,5 @@
+summary: a toolset that lets you implement parts of your Android app in native code
+webpage: https://developer.android.com/ndk
+version: r23c
+bin-url: https://dl.google.com/android/repository/android-ndk-r23c-darwin.zip
+bin-sha: baf793127741eda36f2eabe69cdec23a70c814deb3c75df8744af35aed21e59d

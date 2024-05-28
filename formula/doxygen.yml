@@ -1,0 +1,5 @@
+summary: Generate documentation for several programming languages
+webpage: https://www.doxygen.nl/
+version: 1.9.5
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/doxygen-1.9.5-macos10.15-x86_64.tar.xz
+bin-sha: 69d8a61c5366daca957218efedad21512a520498f466110414fc9ee31ccd02d0

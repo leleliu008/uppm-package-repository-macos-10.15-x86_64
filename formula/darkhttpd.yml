@@ -1,0 +1,5 @@
+summary: Small static webserver without CGI
+webpage: https://unix4lyfe.org/darkhttpd/
+version: 1.13
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/darkhttpd-1.13-macos10.15-x86_64.tar.xz
+bin-sha: f6155723a2379f05f90c0996f3b5ebdb73fba8c1fb683de1827deb84e12482ae

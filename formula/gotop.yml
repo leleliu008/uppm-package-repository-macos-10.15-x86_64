@@ -1,0 +1,5 @@
+summary: Terminal based graphical activity monitor inspired by gtop and vtop
+webpage: https://github.com/xxxserxxx/gotop
+version: 4.2.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/gotop-4.2.0-macos10.15-x86_64.tar.xz
+bin-sha: e6534cb2faafce1a6b200d0c67b0c353419bf26325e5cc402b48d89df32ff5d9

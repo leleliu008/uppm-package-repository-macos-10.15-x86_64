@@ -1,0 +1,5 @@
+summary: Small build system for use with gyp or CMake
+webpage: https://ninja-build.org/
+version: 1.11.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/ninja-1.11.0-macos10.15-x86_64.tar.xz
+bin-sha: 4fef2f5239896db2f1510ef5ea9370f4e8c9f0fe315a6f48e984864b1f97629f

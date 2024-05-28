@@ -1,0 +1,5 @@
+summary: a toolset that lets you implement parts of your Android app in native code
+webpage: https://developer.android.com/ndk
+version: r25b
+bin-url: https://dl.google.com/android/repository/android-ndk-r25b-darwin.zip
+bin-sha: 7e12f1f809878d4f5d5a901809277aa31546d36c10730fade2036d7d95b3607a

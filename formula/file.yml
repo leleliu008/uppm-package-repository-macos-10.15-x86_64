@@ -1,0 +1,5 @@
+summary: Utility to determine file types
+webpage: https://www.darwinsys.com/file
+version: 5.41
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/file-5.41-macos10.15-x86_64.tar.xz
+bin-sha: eaf0a3cc811f323896d2962599c7c9339e6249b88f0a47063b7f05da131b9a21

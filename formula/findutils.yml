@@ -1,0 +1,5 @@
+summary: Collection of GNU find, xargs, and locate
+webpage: https://www.gnu.org/software/findutils
+version: 4.9.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/findutils-4.9.0-macos10.15-x86_64.tar.xz
+bin-sha: c046df3164d1c0673066127b8a57da1419c943145f8a8d7869a2a092b065a8ac

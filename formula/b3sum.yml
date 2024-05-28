@@ -1,0 +1,5 @@
+summary: BLAKE3 cryptographic hash function
+webpage: https://github.com/BLAKE3-team/BLAKE3
+version: 1.3.3
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/b3sum-1.3.3-macos10.15-x86_64.tar.xz
+bin-sha: cc850c43cbe39c72171fb7a3b9a547c7ef70457104a71c928caadcf1b761918e

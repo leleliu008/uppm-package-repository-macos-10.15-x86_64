@@ -1,0 +1,5 @@
+summary: a toolset that lets you implement parts of your Android app in native code
+webpage: https://developer.android.com/ndk
+version: r21e
+bin-url: https://dl.google.com/android/repository/android-ndk-r21e-darwin-x86_64.zip
+bin-sha: 437278103a3db12632c05b1be5c41bbb8522791a67e415cc54411a65366f499d

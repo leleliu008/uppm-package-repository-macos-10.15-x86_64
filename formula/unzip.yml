@@ -1,0 +1,5 @@
+summary: a command-line tool for extracting zip-compressed archives(.zip files)
+webpage: https://infozip.sourceforge.io/UnZip.html
+version: 6.0.28
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/unzip-6.0.28-macos10.15-x86_64.tar.xz
+bin-sha: f17d7f00aecc17c50f4beb59f379fd3b5e437881ee43f2af3cd4f097a5d84695

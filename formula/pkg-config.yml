@@ -1,0 +1,5 @@
+summary: Manage compile and link flags for libraries
+webpage: https://freedesktop.org/wiki/Software/pkg-config
+version: 0.29.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/pkg-config-0.29.2-macos10.15-x86_64.tar.xz
+bin-sha: 6ff2f2fbfff6d610b80472a9324d712f0d1594313141c07f989128ce09d61e8b

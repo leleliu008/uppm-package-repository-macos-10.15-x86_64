@@ -1,0 +1,143 @@
+#!/bin/sh
+
+set -e
+
+if [ -d xcpkg-formula-repository-official-core ] ; then
+    git -C xcpkg-formula-repository-official-core pull
+else
+    git clone --depth=1 https://github.com/leleliu008/xcpkg-formula-repository-official-core
+fi
+
+cd xcpkg-formula-repository-official-core/formula
+
+ls *.yml | sed 's|\.yml$||' | sort | uniq > a
+
+sed -n '/^dep-pkg:/p' *.yml | cut -c10- | tr ' ' '\n' | sort | uniq > b
+
+SED="sed -e s|^-||"
+
+for item in autossh mozjpeg tdu chisel krb5 timg unzip watchman llvm+clang+lld
+do
+    SED="$SED -e /^$item$/d"
+done
+
+echo "SED=$SED"
+
+PKGS="$(diff -U 0 a b | sed '/^--/d' | grep '^-' | $SED)"
+
+PKGS_COUNT="$(printf "$PKGS" | wc -l)"
+PKGS_COUNT="$(($PKGS_COUNT + 1))"
+
+echo "PKGS_COUNT=$PKGS_COUNT"
+
+cd -
+
+cat > .github/workflows/publish.yml <<EOF
+name: publish
+
+on:
+  workflow_dispatch
+
+jobs:
+EOF
+
+unset ITEMS
+unset NEEDS
+
+I=0
+J=0
+K=0
+
+for item in $PKGS
+do
+    if [ -z "$ITEMS" ] ; then
+        ITEMS="$item"
+    else
+        ITEMS="$ITEMS, $item"
+    fi
+
+    K=$(($K + 1))
+
+    J=$(($J + 1))
+
+    echo "J=$J"
+    echo "K=$K"
+
+    if [ "$J" = 128 ] || [ "$K" = "$PKGS_COUNT" ] ; then
+        J=0
+        I=$(($I + 1))
+
+        cat >> .github/workflows/publish.yml <<EOF
+
+  build$I:
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [$ITEMS]
+
+    runs-on: macos-13
+
+    steps:
+      - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
+      - run: chmod +x xcpkg
+
+      - run: ./xcpkg env
+      - run: ./xcpkg setup
+      - run: ./xcpkg update
+      - run: ./xcpkg install MacOSX-10.15-x86_64/\${{ matrix.pkg }}
+
+      - name: pack
+        run: |
+          set -ex
+
+          for item in \$(./xcpkg ls-installed)
+          do
+              ./xcpkg pack "\$item"
+
+              PACKAGE_SUMMARY="\$(./xcpkg info-installed "\$item" summary)"
+              PACKAGE_WEB_URL="\$(./xcpkg info-installed "\$item" web-url)"
+              PACKAGE_VERSION="\$(./xcpkg info-installed "\$item" version)"
+
+              PACKAGE_NAME="\${item#*/}"
+
+              PACKAGE_FILENAME="\$(ls \$PACKAGE_NAME-\$PACKAGE_VERSION-*.tar.xz)"
+
+              PACKAGE_BIN_SHA="\$(./xcpkg run sha256sum "\$PACKAGE_FILENAME" | cut -d ' ' -f1)"
+
+              PACKAGE_BIN_URL="https://github.com/\${{ github.repository }}/releases/download/@TAGNAME@/\$PACKAGE_FILENAME"
+
+              cat > "\$PACKAGE_NAME.yml" <<EOF
+          summary: \$PACKAGE_SUMMARY
+          webpage: \$PACKAGE_WEB_URL
+          version: \$PACKAGE_VERSION
+          bin-url: \$PACKAGE_BIN_URL
+          bin-sha: \$PACKAGE_BIN_SHA
+          EOF
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: \${{ matrix.pkg }}
+          path: |
+            ./*.tar.xz
+            ./*.yml
+EOF
+
+        unset ITEMS
+
+        if [ -z "$NEEDS" ] ; then
+            NEEDS="build$I"
+        else
+            NEEDS="$NEEDS, build$I"
+        fi
+    fi
+done
+
+cat >> .github/workflows/publish.yml <<EOF
+
+  publish:
+    needs: [$NEEDS]
+
+EOF
+
+cat >> .github/workflows/publish.yml < foot

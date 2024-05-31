@@ -1,0 +1,70 @@
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: '*'
+          path: .
+          merge-multiple: true
+
+      - run: ls
+
+      - run: |
+          set -ex
+
+          TAGNAME="$(date +%Y.%m.%d)"
+
+          sed -i "s|@TAGNAME@|$TAGNAME|" *.yml
+
+          mv *.yml formula/
+
+          DIRNAME="uppm-formula-repository-macos-10.15-x86_64-$TAGNAME"
+
+          install -d "$DIRNAME"
+
+          cp -r formula "$DIRNAME/"
+
+          tar cvJf "$DIRNAME.tar.xz" "$DIRNAME"
+
+          sha256sum *.tar.xz > sha256sums.txt
+
+          cat > notes.md <<EOF
+          these packages are created by [xcpkg](https://github.com/leleliu008/xcpkg).
+
+          ## Environment Variables
+
+          **following environment variables should be set for \`git\` package**
+
+          \`\`\`bash
+          export GIT_EXEC_PATH="\$GIT_INSTALL_DIR/libexec/git-core"
+          export GIT_TEMPLATE_DIR="\$GIT_INSTALL_DIR/share/git-core/templates"
+          \`\`\`
+
+          **following environment variables should be set for \`file\` package**
+
+          \`\`\`bash
+          export MAGIC="\$FILE_INSTALL_DIR/share/misc/magic.mgc"
+          \`\`\`
+
+          ## sha256sum
+
+          \`\`\`
+          $(cat sha256sums.txt)
+          \`\`\`
+          EOF
+
+          gh release create "$TAGNAME" *.tar.xz sha256sums.txt --title "$TAGNAME" --notes-file notes.md
+
+          git config --global user.name  "leleliu008"
+          git config --global user.email "leleliu008@gmail.com"
+
+          git pull
+
+          git add formula
+          git commit -m "release new version $TAGNAME"
+          git push origin master

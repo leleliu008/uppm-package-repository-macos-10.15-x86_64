@@ -4,51 +4,45 @@ on:
   workflow_dispatch
 
 jobs:
-  publish:
-    runs-on: macos-12
 
-    env:
-      GH_TOKEN: ${{ github.token }}
-      PKG_NAMES: aria2 axel autotools-setup bash bat bison bmake bzip2 b3sum cargo-c cmake coreutils cppcheck ctop curlie curl darkhttpd diffutils dos2unix doxygen ed file findutils flex fzf gawk gettext glow gm4 gmake gnupg gh gn git gogs gotop gotty gperf grep gsed gtar gzip hugo jq lazygit libarchive lzip lz4 mediainfo mosh mpg123 nasm ninja nushell openssl patchelf patch pkgconf pkg-config pngquant putty protobuf pigz qpdf qrencode quickjs re2c rtmpdump sqlite starship svn-lite tcpdump tealdeer tig tmux tree uctags unrar unzip uppm util-linux volta wget xmake xxd xz yasm youtubedr yq zopfli zoxide zip p7zip zstd zsync rsync base16 base64 sysinfo easyutils
-      PLATFORM_VERSION: '10.15'
+  build1:
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [aalib, actionlint, adig, ag, age, alacritty, alass, algernon, anchor-cli, antibody, apkeep, aptly, archiver, args, aria2, autoconf-archive, automake, autotools-setup, awk, axel, b3sum, bandwhich, base16, base64, bash, basis_universal, bat, bazelisk, bc, bcrypt, bdw-gc, bear, berkeley-db, bgrep, binaryen, bind, binocle, bison, bitcoin, bk, blockhash, bmake, boringssl, botan, bottom, boxes, brook, broot, bsdtar, bullet, byacc, bzip2, c-examples, caddy, cargo-c, cargo-deb, catch2, catimg, ccache, cereal, cflow, chafa, cheat, check, chezmoi, chicken, choose, cli11, cmake, coreutils, cotp, cpio, cppcheck, cppunit, cpuinfo, croc, crosstool-ng, crowbook, ctop, cue, curlie, cxxopts, d2, darkhttpd, dasel, dash, dav1d, delta, diffutils, distcc, dmalloc, dns2tcp, dnslookup, dnsmap, dnsx, dog, doggo, dos2unix, dot_static, doxygen, dtc, dua, duf, dufs, duktape, dust, dylibbundler, easyutils, ed, eigen, elvish, epsilon, esbuild, ethereum, exa, exhale, eza, faac, faad2, fcp, fd, fdk-aac, fdroidcl, fff, figlet, findent, findutils, fish]
+
+    runs-on: macos-13
 
     steps:
       - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
-      - run: chmod a+x xcpkg
+      - run: chmod +x xcpkg
+
+      - run: ./xcpkg env
       - run: ./xcpkg setup
       - run: ./xcpkg update
-      - run: |
-          for PKG_NAME in $PKG_NAMES
+      - run: ./xcpkg install MacOSX-10.15-x86_64/${{ matrix.pkg }}
+
+      - name: pack
+        run: |
+          set -ex
+
+          for item in $(./xcpkg ls-installed)
           do
-            ./xcpkg install "MacOSX/$PLATFORM_VERSION/x86_64/$PKG_NAME" --link-type=static-prefered --install-lib=static
-            ./xcpkg pack    "MacOSX/$PLATFORM_VERSION/x86_64/$PKG_NAME"
-          done
+              ./xcpkg pack "$item"
 
-      - run: |
-          cd ~/.xcpkg/packed
+              PACKAGE_SUMMARY="$(./xcpkg info-installed "$item" summary)"
+              PACKAGE_WEB_URL="$(./xcpkg info-installed "$item" web-url)"
+              PACKAGE_VERSION="$(./xcpkg info-installed "$item" version)"
 
-          date +%Y.%m.%d > ts.txt
+              PACKAGE_NAME="${item#*/}"
 
-          TAGNAME="$(cat ts.txt)"
+              PACKAGE_FILENAME="$(ls $PACKAGE_NAME-$PACKAGE_VERSION-*.tar.xz)"
 
-          UPPM_FORMULA_ROOT_DIR="uppm-formula-repository-macos$PLATFORM_VERSION-x86_64-$TAGNAME"
-          UPPM_FORMULA_DIR="$UPPM_FORMULA_ROOT_DIR/formula"
+              PACKAGE_BIN_SHA="$(./xcpkg run sha256sum "$PACKAGE_FILENAME" | cut -d ' ' -f1)"
 
-          install -d "$UPPM_FORMULA_DIR"
+              PACKAGE_BIN_URL="https://github.com/${{ github.repository }}/releases/download/@TAGNAME@/$PACKAGE_FILENAME"
 
-          for PACKAGE_NAME in $PKG_NAMES
-          do
-              PACKAGE_SUMMARY="$("${HOME}/.uppm/installed/yq/bin/yq" .summary "${HOME}/.xcpkg/installed/${PACKAGE_NAME}/.xcpkg/receipt.yml")"
-              PACKAGE_WEB_URL="$("${HOME}/.uppm/installed/yq/bin/yq" .web-url "${HOME}/.xcpkg/installed/${PACKAGE_NAME}/.xcpkg/receipt.yml")"
-              PACKAGE_VERSION="$("${HOME}/.uppm/installed/yq/bin/yq" .version "${HOME}/.xcpkg/installed/${PACKAGE_NAME}/.xcpkg/receipt.yml")"
-
-              PACKAGE_BIN_FILENAME="$PACKAGE_NAME-$PACKAGE_VERSION-macos$PLATFORM_VERSION-x86_64.tar.xz"
-
-              PACKAGE_BIN_SHA=$(~/.uppm/installed/coreutils/bin/sha256sum "$PACKAGE_BIN_FILENAME" | cut -d ' ' -f1)
-
-              PACKAGE_BIN_URL="https://github.com/leleliu008/uppm-package-repository-macos$PLATFORM_VERSION-x86_64/releases/download/${TAGNAME}/${PACKAGE_BIN_FILENAME}"
-
-              cat > "$UPPM_FORMULA_DIR/$PACKAGE_NAME.yml" <<EOF
+              cat > "$PACKAGE_NAME.yml" <<EOF
           summary: $PACKAGE_SUMMARY
           webpage: $PACKAGE_WEB_URL
           version: $PACKAGE_VERSION
@@ -57,16 +51,265 @@ jobs:
           EOF
           done
 
-          tar cvJf "$UPPM_FORMULA_ROOT_DIR.tar.xz" "$UPPM_FORMULA_ROOT_DIR"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.pkg }}
+          path: |
+            ./*.tar.xz
+            ./*.yml
 
-          ~/.uppm/installed/coreutils/bin/sha256sum *.tar.xz > sha256sums.txt
+  build2:
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [flatc, flex, flock, fnm, fontconfig, frei0r, fselect, fsmon, fswatch, fzf, fzy, garble, gawk, gbt, gdu, geographiclib, geos, getopt, gettext-tools, gh, giflib, gindent, git, git-cliff, git-lfs, gitui, gitwatch, glib-tools, glow, glslang, gm4, gmake, gn, gnu-barcode, gnu-which, gnupg, go-md2man, go-tools, godu, gogs, golang, gomobile, google-benchmark, gopls, goreleaser, gosh, gotop, gotty, gox, gperf, gperftools, gping, gpsim, gputils, graphene, grep, grex, groff, gron, grpc-plugins, gsed, gtar, gzip, helix, helm, hexdump, hexyl, htop, htslib, httpx, hugo, hunspell, hurl, hydroxide, hyperfine, id3lib, ideviceinstaller, inih, intltool, invoice, ixwebsocket, jansson, jemalloc, jfrog-cli, jj, joshuto, jq, json-glib, jump, k9s, ko, lame, lazygit, lcms2, lcov, less, lf, libaec, libao, libasync++, libb2, libbcrypt, libblake3, libcaca, libcddb, libcdio, libcgif, libcpuinfo, libcrc32c, libcroco, libdatrie, libduktape, libfftw3, libflatbuffers, libimagequant, libintl, libintl-lite, libirecovery, libisoburn, libjpeg, libkrb5, liblinear, liblmdb, liblua, libmaxminddb, libmd, libmetalink, libmicrohttpd]
+
+    runs-on: macos-13
+
+    steps:
+      - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
+      - run: chmod +x xcpkg
+
+      - run: ./xcpkg env
+      - run: ./xcpkg setup
+      - run: ./xcpkg update
+      - run: ./xcpkg install MacOSX-10.15-x86_64/${{ matrix.pkg }}
+
+      - name: pack
+        run: |
+          set -ex
+
+          for item in $(./xcpkg ls-installed)
+          do
+              ./xcpkg pack "$item"
+
+              PACKAGE_SUMMARY="$(./xcpkg info-installed "$item" summary)"
+              PACKAGE_WEB_URL="$(./xcpkg info-installed "$item" web-url)"
+              PACKAGE_VERSION="$(./xcpkg info-installed "$item" version)"
+
+              PACKAGE_NAME="${item#*/}"
+
+              PACKAGE_FILENAME="$(ls $PACKAGE_NAME-$PACKAGE_VERSION-*.tar.xz)"
+
+              PACKAGE_BIN_SHA="$(./xcpkg run sha256sum "$PACKAGE_FILENAME" | cut -d ' ' -f1)"
+
+              PACKAGE_BIN_URL="https://github.com/${{ github.repository }}/releases/download/@TAGNAME@/$PACKAGE_FILENAME"
+
+              cat > "$PACKAGE_NAME.yml" <<EOF
+          summary: $PACKAGE_SUMMARY
+          webpage: $PACKAGE_WEB_URL
+          version: $PACKAGE_VERSION
+          bin-url: $PACKAGE_BIN_URL
+          bin-sha: $PACKAGE_BIN_SHA
+          EOF
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.pkg }}
+          path: |
+            ./*.tar.xz
+            ./*.yml
+
+  build3:
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [libmill, libmimalloc, libmpir, libnetpbm, libnng, libopenh264, libphonenumber, libpipeline, libpsl, libpugixml, libqalculate, libraqm, libraw, librist, librtmp, libsmi, libspng, libsrtp, libtinyxml2, libtorrent-rasterbar, libtwolame, libupnp, libuuid, libwebm, libxcrypt, libxml2-python3, libyuv, libzim, libzlog, lief, lighttpd, links, livego, llhttp, lmdb, lodepng, log4cplus, lolcat, lrzip, lsd, lsof, luau, lunatic, lunzip, lychee, lynx, lz4, lzip, lzo, lzop, magic_enum, mcfly, md4c, mdbook, mdcat, mediainfo, minisign, miniz, minizip, mold, mosh, mpg123, mpv, msgpack-c, mujs, nano, nanomsg, nap, nasm, navi, ncdu, neofetch, netcat, nethogs, netpbm, nghttp2, nginx, ngtcp2, ninja, nnn, nsh, nspr, ntbtls, nuclei, nushell, oat++, obfs4proxy, onefetch, openal-soft, openblas, opencolorio, openlibm, openmpi, openslide, p11-kit, p7zip, packcc, patch, patchelf, pbzip2, pcapplusplus, pget, pigz, pjsip, pkg-config, pkgconf, plzip, png, pngcheck, pngquant, pngsplit, poco, ppkg, procs, progress, pup, putty, pybind11, python3-setup, q, qemu, qpdf, qrencode, quiche, quickjs, ragel, rang, ranger]
+
+    runs-on: macos-13
+
+    steps:
+      - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
+      - run: chmod +x xcpkg
+
+      - run: ./xcpkg env
+      - run: ./xcpkg setup
+      - run: ./xcpkg update
+      - run: ./xcpkg install MacOSX-10.15-x86_64/${{ matrix.pkg }}
+
+      - name: pack
+        run: |
+          set -ex
+
+          for item in $(./xcpkg ls-installed)
+          do
+              ./xcpkg pack "$item"
+
+              PACKAGE_SUMMARY="$(./xcpkg info-installed "$item" summary)"
+              PACKAGE_WEB_URL="$(./xcpkg info-installed "$item" web-url)"
+              PACKAGE_VERSION="$(./xcpkg info-installed "$item" version)"
+
+              PACKAGE_NAME="${item#*/}"
+
+              PACKAGE_FILENAME="$(ls $PACKAGE_NAME-$PACKAGE_VERSION-*.tar.xz)"
+
+              PACKAGE_BIN_SHA="$(./xcpkg run sha256sum "$PACKAGE_FILENAME" | cut -d ' ' -f1)"
+
+              PACKAGE_BIN_URL="https://github.com/${{ github.repository }}/releases/download/@TAGNAME@/$PACKAGE_FILENAME"
+
+              cat > "$PACKAGE_NAME.yml" <<EOF
+          summary: $PACKAGE_SUMMARY
+          webpage: $PACKAGE_WEB_URL
+          version: $PACKAGE_VERSION
+          bin-url: $PACKAGE_BIN_URL
+          bin-sha: $PACKAGE_BIN_SHA
+          EOF
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.pkg }}
+          path: |
+            ./*.tar.xz
+            ./*.yml
+
+  build4:
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [rapidjson, rav1e, rclone, re2c, redis, restic, resvg, rhash, ripgrep, ripgrep-all, rlwrap, rsass, rsync, rtmpdump, rtorrent, ruff, rust-analyzer, sassc, scc, sccache, screenresolution, sd, shared-mime-info, shc, shell2http, shellharden, shiori, silicon, simdjson, sjpeg, skcms, sl, slang, socat, soundtouch, speex, sqlite3, starship, stwolame, stylua, subfinder, supervisord, suricata, svn-lite, swig, syncthing, sysinfo, szip, t1utils, taglib, tarlz, tbb, tbox, tcc, tcl, tcpdump, tealdeer, tectonic, tengo, terragrunt, tig, tinysearch, tlrc, tmux, tokei, toml++, toml11, tree, trietool, ttyd, ttygif, ttyrec, tweego, twolame, typos, uctags, unbound, unixodbc, unrar, uppm, uppm@0.15.2, uppm@0.15.3, usrsctp, utf8.h, utfcpp, util-linux, vala, valijson, vegeta, vim, virustotal-cli, viu, volta, vsftpd, wabt, wasm3, wasmer, wasmtime, watchexec, wavpack, webhook, websocketpp, wget, whois, wolfssl, wuzz, x264, x265, xh, xmake, xmlrpc-c, xmlto, xmlutils, xmlwf, xorg-libxcursor, xorg-libxdamage, xorg-libxmu, xorg-libxpresent, xorg-libxscrnsaver, xorg-libxshmfence, xorg-libxvmc, xorg-libxxf86vm, xorg-xinput, xorriso, xpup, xsltproc, xxd, xxhash]
+
+    runs-on: macos-13
+
+    steps:
+      - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
+      - run: chmod +x xcpkg
+
+      - run: ./xcpkg env
+      - run: ./xcpkg setup
+      - run: ./xcpkg update
+      - run: ./xcpkg install MacOSX-10.15-x86_64/${{ matrix.pkg }}
+
+      - name: pack
+        run: |
+          set -ex
+
+          for item in $(./xcpkg ls-installed)
+          do
+              ./xcpkg pack "$item"
+
+              PACKAGE_SUMMARY="$(./xcpkg info-installed "$item" summary)"
+              PACKAGE_WEB_URL="$(./xcpkg info-installed "$item" web-url)"
+              PACKAGE_VERSION="$(./xcpkg info-installed "$item" version)"
+
+              PACKAGE_NAME="${item#*/}"
+
+              PACKAGE_FILENAME="$(ls $PACKAGE_NAME-$PACKAGE_VERSION-*.tar.xz)"
+
+              PACKAGE_BIN_SHA="$(./xcpkg run sha256sum "$PACKAGE_FILENAME" | cut -d ' ' -f1)"
+
+              PACKAGE_BIN_URL="https://github.com/${{ github.repository }}/releases/download/@TAGNAME@/$PACKAGE_FILENAME"
+
+              cat > "$PACKAGE_NAME.yml" <<EOF
+          summary: $PACKAGE_SUMMARY
+          webpage: $PACKAGE_WEB_URL
+          version: $PACKAGE_VERSION
+          bin-url: $PACKAGE_BIN_URL
+          bin-sha: $PACKAGE_BIN_SHA
+          EOF
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.pkg }}
+          path: |
+            ./*.tar.xz
+            ./*.yml
+
+  build5:
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg: [xz, yajl, yaml-cpp, yasm, youtubedr, yq, yyjson, zip, zlib-ng, zls, zola, zopfli, zoxide, zsh, zstd, zsync]
+
+    runs-on: macos-13
+
+    steps:
+      - run: curl -LO https://raw.githubusercontent.com/leleliu008/xcpkg/master/xcpkg
+      - run: chmod +x xcpkg
+
+      - run: ./xcpkg env
+      - run: ./xcpkg setup
+      - run: ./xcpkg update
+      - run: ./xcpkg install MacOSX-10.15-x86_64/${{ matrix.pkg }}
+
+      - name: pack
+        run: |
+          set -ex
+
+          for item in $(./xcpkg ls-installed)
+          do
+              ./xcpkg pack "$item"
+
+              PACKAGE_SUMMARY="$(./xcpkg info-installed "$item" summary)"
+              PACKAGE_WEB_URL="$(./xcpkg info-installed "$item" web-url)"
+              PACKAGE_VERSION="$(./xcpkg info-installed "$item" version)"
+
+              PACKAGE_NAME="${item#*/}"
+
+              PACKAGE_FILENAME="$(ls $PACKAGE_NAME-$PACKAGE_VERSION-*.tar.xz)"
+
+              PACKAGE_BIN_SHA="$(./xcpkg run sha256sum "$PACKAGE_FILENAME" | cut -d ' ' -f1)"
+
+              PACKAGE_BIN_URL="https://github.com/${{ github.repository }}/releases/download/@TAGNAME@/$PACKAGE_FILENAME"
+
+              cat > "$PACKAGE_NAME.yml" <<EOF
+          summary: $PACKAGE_SUMMARY
+          webpage: $PACKAGE_WEB_URL
+          version: $PACKAGE_VERSION
+          bin-url: $PACKAGE_BIN_URL
+          bin-sha: $PACKAGE_BIN_SHA
+          EOF
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.pkg }}
+          path: |
+            ./*.tar.xz
+            ./*.yml
+
+  publish:
+    needs: [build1, build2, build3, build4, build5]
+
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: '*'
+          path: .
+          merge-multiple: true
+
+      - run: ls
+
+      - run: |
+          set -ex
+
+          TAGNAME="$(date +%Y.%m.%d)"
+
+          sed -i "s|@TAGNAME@|$TAGNAME|" *.yml
+
+          mv *.yml formula/
+
+          DIRNAME="uppm-formula-repository-macos-10.15-x86_64-$TAGNAME"
+
+          install -d "$DIRNAME"
+
+          cp -r formula "$DIRNAME/"
+
+          tar cvJf "$DIRNAME.tar.xz" "$DIRNAME"
+
+          sha256sum *.tar.xz > sha256sums.txt
 
           cat > notes.md <<EOF
           these packages are created by [xcpkg](https://github.com/leleliu008/xcpkg).
-
-          these packages have no dependencies other than \`/usr/lib/lib*.dylib\` and \`/System/Library/Frameworks/*.framework\`.
-
-          these packages are relocatable which means that you can install them to anywhere.
 
           ## Environment Variables
 
@@ -90,8 +333,13 @@ jobs:
           \`\`\`
           EOF
 
-          # to avaid: failed to run git: fatal: not a git repository (or any of the parent directories): .git
-          git -c init.defaultBranch=master init
-          git remote add origin ${{ github.repositoryUrl }}
-
           gh release create "$TAGNAME" *.tar.xz sha256sums.txt --title "$TAGNAME" --notes-file notes.md
+
+          git config --global user.name  "leleliu008"
+          git config --global user.email "leleliu008@gmail.com"
+
+          git pull
+
+          git add formula
+          git commit -m "release new version $TAGNAME"
+          git push origin master

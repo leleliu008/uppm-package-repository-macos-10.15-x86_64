@@ -16,7 +16,7 @@ sed -n '/^dep-pkg:/p' *.yml | cut -c10- | tr ' ' '\n' | sort | uniq > b
 
 SED="sed -e s|^-||"
 
-for item in timg watchman llvm+clang+lld
+for item in docbook timg watchman llvm+clang+lld
 do
     SED="$SED -e /^$item$/d"
 done

@@ -1,0 +1,5 @@
+summary: C code prettifier
+webpage: https://www.gnu.org/software/indent/
+version: 2.2.13
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/gindent-2.2.13-macos-10.15-x86_64.tar.xz
+bin-sha: dd2694ade55548e2b3b3d0ff9850bffba95200fbd96c5b1ba285d1f751ec2a29

@@ -1,0 +1,5 @@
+summary: Scaling, colorspace conversion, and dithering library
+webpage: https://github.com/sekrit-twc/zimg
+version: 3.0.5
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libzimg-3.0.5-macos-10.15-x86_64.tar.xz
+bin-sha: 0f5a66e763eaf45fdfe0e3f1b9e0c12a9f4f3a92508ab40fbbfcb6260a652257

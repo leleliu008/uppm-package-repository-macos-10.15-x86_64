@@ -1,0 +1,5 @@
+summary: Wrapper around libsass that helps to create command-line apps
+webpage: https://github.com/sass/sassc
+version: 3.6.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/sassc-3.6.2-macos-10.15-x86_64.tar.xz
+bin-sha: b78ad64cd5bc6ee90dfb4c11e9b58a6b55cc4ac1941bcb567032ad032167403c

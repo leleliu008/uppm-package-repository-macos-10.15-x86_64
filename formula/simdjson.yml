@@ -1,0 +1,5 @@
+summary: SIMD-accelerated C++ JSON parser
+webpage: https://simdjson.org
+version: 3.9.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/simdjson-3.9.1-macos-10.15-x86_64.tar.xz
+bin-sha: e0f0355e1061f7e9776e1b8644257cd8f9441a53b6f4d976f1af86acd936b2a8

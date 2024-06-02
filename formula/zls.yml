@@ -1,0 +1,5 @@
+summary: Language Server for Zig
+webpage: https://github.com/zigtools/zls
+version: 0.12.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/zls-0.12.0-macos-10.15-x86_64.tar.xz
+bin-sha: 93b1a23a1c489e98828d9cebc0358775188e962a7013871ddbd30ec4507b4ab6

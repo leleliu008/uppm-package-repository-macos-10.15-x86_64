@@ -1,0 +1,5 @@
+summary: Decompressor for lzip files
+webpage: https://www.nongnu.org/lzip/lunzip.html
+version: 1.14
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/lunzip-1.14-macos-10.15-x86_64.tar.xz
+bin-sha: 63282771c3c87ff3d00b08fd018ccf64ba21ed3b6f56cbe1dfeb6432960e61b6

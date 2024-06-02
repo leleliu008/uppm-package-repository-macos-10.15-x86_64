@@ -1,0 +1,5 @@
+summary: Library to Instrument Executable Formats
+webpage: https://github.com/lief-project/LIEF
+version: 2024.06.02
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/lief-2024.06.02-macos-10.15-x86_64.tar.xz
+bin-sha: 5abac93f5b4d3248558520cf342c11eed9ba7f32e4bb8a06f9a451c3f6b08045

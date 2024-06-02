@@ -1,0 +1,5 @@
+summary: C++ geography library
+webpage: https://geographiclib.sourceforge.io/
+version: r2.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/geographiclib-r2.2-macos-10.15-x86_64.tar.xz
+bin-sha: 5036f159fa6c56b087ffd8832b246a84b0b2d46f0400e555016976c38869fedb

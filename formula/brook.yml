@@ -1,0 +1,5 @@
+summary: Cross-platform strong encryption and not detectable proxy. Zero-Configuration
+webpage: https://txthinking.github.io/brook/
+version: 20240606
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/brook-20240606-macos-10.15-x86_64.tar.xz
+bin-sha: f2419ce738e9660728a759cf18c42a608274597e0c229c1cb476fcae7adb2578

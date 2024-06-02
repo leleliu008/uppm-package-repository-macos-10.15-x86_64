@@ -1,0 +1,5 @@
+summary: A fast, simple fuzzy text selector with an advanced scoring algorithm
+webpage: https://github.com/jhawthorn/fzy
+version: 1.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/fzy-1.0-macos-10.15-x86_64.tar.xz
+bin-sha: f8819949ce4728f7d26938e63ebdfb66bea4139950e9906049a1abaf0be2aab4

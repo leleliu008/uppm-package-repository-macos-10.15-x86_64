@@ -1,0 +1,5 @@
+summary: SkCMS
+webpage: https://skia.googlesource.com/skcms.git
+version: 2024.06.02
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/skcms-2024.06.02-macos-10.15-x86_64.tar.xz
+bin-sha: 41831fb653f6c1db5ce872a8ca5da76a10c28bf6857c315c1dd27d3f8c18916c

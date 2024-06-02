@@ -1,5 +1,5 @@
-summary: Zstandard is a real-time compression algorithm
+summary: A real-time compression utility with high compression ratios
 webpage: https://facebook.github.io/zstd
-version: 1.5.2
-bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/zstd-1.5.2-macos10.15-x86_64.tar.xz
-bin-sha: 3fb6b117980c9974d1c8070935efbfed925ea713f062b9c17832dd25920b2f75
+version: 1.5.6
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/zstd-1.5.6-macos-10.15-x86_64.tar.xz
+bin-sha: 7aaebd51ad94dd71c8000f8559424ae8479218056b3cc4c971cf4f089651a44a

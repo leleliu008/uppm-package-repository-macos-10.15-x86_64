@@ -1,0 +1,5 @@
+summary: Implementation of CRC32C with CPU-specific acceleration
+webpage: https://github.com/google/crc32c
+version: 1.1.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libcrc32c-1.1.2-macos-10.15-x86_64.tar.xz
+bin-sha: 552f298756e41101e71e04f0e2bc56ca39be4cfa9646a0b54d77081da5b98e22

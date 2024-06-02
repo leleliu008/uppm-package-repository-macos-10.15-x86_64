@@ -1,0 +1,5 @@
+summary: A Rust compiler front-end for IDEs
+webpage: https://rust-analyzer.github.io/
+version: 2024.05.27
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/rust-analyzer-2024.05.27-macos-10.15-x86_64.tar.xz
+bin-sha: 9688ed43b4cccf7509b98349377d35cd092cd1274603d0a6fd2085b050d74bb2

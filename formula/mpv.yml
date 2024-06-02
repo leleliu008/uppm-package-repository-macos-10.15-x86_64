@@ -1,0 +1,5 @@
+summary: Media player based on MPlayer and mplayer2
+webpage: https://mpv.io
+version: 0.38.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/mpv-0.38.0-macos-10.15-x86_64.tar.xz
+bin-sha: fdf16499b713e29a6264930d30fc3541ab4a9ff02afb56920d366bac3955474b

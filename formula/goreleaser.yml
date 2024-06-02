@@ -1,0 +1,5 @@
+summary: Deliver Go binaries as fast and easily as possible
+webpage: https://goreleaser.com/
+version: 1.26.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/goreleaser-1.26.2-macos-10.15-x86_64.tar.xz
+bin-sha: 5f1ebc889f4d9fb33986967d50a13be9725f4162126ee63ccf5f567641f957b3

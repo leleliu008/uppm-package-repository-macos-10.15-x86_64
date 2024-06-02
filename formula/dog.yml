@@ -1,0 +1,5 @@
+summary: A command-line DNS client
+webpage: https://dns.lookup.dog/
+version: 0.1.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/dog-0.1.0-macos-10.15-x86_64.tar.xz
+bin-sha: 61972e15755dacacf5fcc1a0b207b2749df41b6b03f37070c83b9e325dc4d1c8

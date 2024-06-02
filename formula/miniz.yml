@@ -1,0 +1,5 @@
+summary: implements the zlib (RFC 1950) and Deflate (RFC 1951) compressed data format specification standards
+webpage: https://github.com/richgel999/miniz
+version: 2.2.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/miniz-2.2.0-macos-10.15-x86_64.tar.xz
+bin-sha: c487d0848ac80cc856dfdb7ddc4e26efea9e857501f2b63f552d36af57278953

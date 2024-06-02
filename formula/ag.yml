@@ -1,0 +1,5 @@
+summary: Code-search similar to ack
+webpage: https://github.com/ggreer/the_silver_searcher
+version: 2.2.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/ag-2.2.0-macos-10.15-x86_64.tar.xz
+bin-sha: 850c90677950c9101dea9fa32a3be9f81a41171cb047d9e126acb5ad0df21d14

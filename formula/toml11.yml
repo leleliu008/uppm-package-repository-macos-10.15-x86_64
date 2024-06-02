@@ -1,0 +1,5 @@
+summary: A header-only C++11 (or later) library for parsing TOML
+webpage: https://github.com/ToruNiina/toml11
+version: 3.8.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/toml11-3.8.1-macos-10.15-x86_64.tar.xz
+bin-sha: df200a4c41730f68fffa449a45a8e22f08018929e056f271dbd3cdffac08e864

@@ -1,0 +1,5 @@
+summary: Emulator for x86 and PowerPC
+webpage: https://www.qemu.org/
+version: 9.0.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/qemu-9.0.0-macos-10.15-x86_64.tar.xz
+bin-sha: 63c1786a85e51fae7c856d8606eae3548686d89eaba4f6ae8040080a8dae98d0

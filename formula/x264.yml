@@ -1,0 +1,5 @@
+summary: A free library for encoding video streams into the H.264/MPEG-4 AVC compression format
+webpage: https://www.videolan.org/developers/x264.html
+version: r3108
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/x264-r3108-macos-10.15-x86_64.tar.xz
+bin-sha: 95b588534ffae663d39a3fb48b4abda7c0cff6fe6f3a4419e23964c9290e43b8

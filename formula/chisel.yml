@@ -1,0 +1,5 @@
+summary: A collection of LLDB commands to assist debugging iOS apps
+webpage: https://github.com/facebook/chisel
+version: 2.0.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/chisel-2.0.1-macos-10.15-x86_64.tar.xz
+bin-sha: e157f44fc7d4de57a88d7fbd350f7fe2433f70e85892e0a879f226fb71cb2dd6

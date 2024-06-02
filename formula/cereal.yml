@@ -1,0 +1,5 @@
+summary: C++11 library for serialization
+webpage: https://uscilab.github.io/cereal/
+version: 1.3.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/cereal-1.3.2-macos-10.15-x86_64.tar.xz
+bin-sha: 7a64d943e2f628c347686796ab5a8b9d4b8492d536b5ed96bb2335df23140b63

@@ -1,0 +1,5 @@
+summary: X.Org API for Xinerama extension to X11 Protocol
+webpage: https://www.x.org/
+version: 1.1.5
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/xorg-libxinerama-1.1.5-macos-10.15-x86_64.tar.xz
+bin-sha: 537324fecdc14d1a703a26f903a6ff641061a98d47a4c3530aafec7a660e5fef

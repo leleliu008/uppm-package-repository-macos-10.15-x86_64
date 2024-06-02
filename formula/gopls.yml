@@ -1,0 +1,5 @@
+summary: Language server for the Go language
+webpage: https://github.com/golang/tools/tree/master/gopls
+version: 0.15.3
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/gopls-0.15.3-macos-10.15-x86_64.tar.xz
+bin-sha: ffe82da35ec96181794e0dc50312b60e3f1cfe812f6aecf2a4b7714fbd582428

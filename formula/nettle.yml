@@ -1,0 +1,5 @@
+summary: Low-level cryptographic library
+webpage: https://www.lysator.liu.se/~nisse/nettle
+version: 3.9.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/nettle-3.9.1-macos-10.15-x86_64.tar.xz
+bin-sha: 8807079e02fb41cdc85dc059e588d3c637a09e15b0a278ecce328fb2c41bbe44

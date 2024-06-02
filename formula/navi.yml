@@ -1,0 +1,5 @@
+summary: Interactive cheatsheet tool for the command-line
+webpage: https://github.com/denisidoro/navi
+version: 2.23.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/navi-2.23.0-macos-10.15-x86_64.tar.xz
+bin-sha: c7cd3ec1fcab50a9c288634770b13e151daddb30d5f2636a9e8ec52a58753455

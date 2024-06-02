@@ -1,0 +1,5 @@
+summary: Improved top (interactive process viewer)
+webpage: https://htop.dev
+version: 3.3.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/htop-3.3.0-macos-10.15-x86_64.tar.xz
+bin-sha: dc8f416c62f3e36c818f893b7dc9cb1c871e15e4000314edc1dd55df622a1033

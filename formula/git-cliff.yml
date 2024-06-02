@@ -1,0 +1,5 @@
+summary: A highly customizable Changelog Generator that follows Conventional Commit specifications
+webpage: https://github.com/orhun/git-cliff
+version: 2.2.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/git-cliff-2.2.1-macos-10.15-x86_64.tar.xz
+bin-sha: 2e3e9494abe4f147af33fa65d69ecf408df7cae85a4875b99382a81d39bf1fb3

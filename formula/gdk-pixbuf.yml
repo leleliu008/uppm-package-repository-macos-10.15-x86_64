@@ -1,0 +1,5 @@
+summary: Toolkit for image loading and pixel buffer manipulation
+webpage: https://gtk.org/
+version: 2.42.10
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/gdk-pixbuf-2.42.10-macos-10.15-x86_64.tar.xz
+bin-sha: 34e6d9abcdcea468e05a87bee4031a10c986acebce3e881ee1947d18a00f2817

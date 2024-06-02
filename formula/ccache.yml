@@ -1,0 +1,5 @@
+summary: Object-file caching compiler wrapper
+webpage: https://ccache.dev
+version: 4.9.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/ccache-4.9.1-macos-10.15-x86_64.tar.xz
+bin-sha: a05907176b6b67ffe8f26516dc3f3b0da0b0694ed0d8c422b5f8460594f5a721

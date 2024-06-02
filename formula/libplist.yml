@@ -1,0 +1,5 @@
+summary: A library to handle Apple Property List format in binary or XML
+webpage: https://libimobiledevice.org/
+version: 2.6.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libplist-2.6.0-macos-10.15-x86_64.tar.xz
+bin-sha: 81286daae0aa54146c963a54462cdf2fe11e3798a8f1e45cc982a1b79a2c1fbc

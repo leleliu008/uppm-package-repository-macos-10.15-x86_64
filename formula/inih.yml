@@ -1,0 +1,5 @@
+summary: A simple .ini file parser in C
+webpage: https://github.com/benhoyt/inih
+version: r58
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/inih-r58-macos-10.15-x86_64.tar.xz
+bin-sha: 767702fce3dd4e8b2f2dbbdc0f342de5e66414061635127a55306cf9e87c5bd1

@@ -1,0 +1,5 @@
+summary: Library and utility to talk to iBoot/iBSS via USB
+webpage: https://www.libimobiledevice.org
+version: 1.2.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libirecovery-1.2.0-macos-10.15-x86_64.tar.xz
+bin-sha: 632e9cbda226280e39b9187a0530e18a1fc327f36c2241fdf72a614b12753475

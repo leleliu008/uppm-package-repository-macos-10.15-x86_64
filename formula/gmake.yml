@@ -1,5 +1,5 @@
 summary: Utility for directing compilation
 webpage: https://www.gnu.org/software/make
-version: 4.3
-bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/gmake-4.3-macos10.15-x86_64.tar.xz
-bin-sha: 847cd68ffcaf790f5399b9e57717a6bca15e35c6f56720c3767a4556ba0f24a7
+version: 4.4.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/gmake-4.4.1-macos-10.15-x86_64.tar.xz
+bin-sha: 4c5a1ef9da1c3b25aec0e2e3432ac97aefebdf5bcbef39fcb730f73c8e0118c5

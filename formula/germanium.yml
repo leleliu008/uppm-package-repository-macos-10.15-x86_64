@@ -1,0 +1,5 @@
+summary: Generate image from source code
+webpage: https://github.com/matsuyoshi30/germanium
+version: 1.2.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/germanium-1.2.2-macos-10.15-x86_64.tar.xz
+bin-sha: a0e5b3e36745056e09794d579f9de7774ee47141fa66d000e396139c99eb712a

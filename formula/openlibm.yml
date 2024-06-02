@@ -1,0 +1,5 @@
+summary: High quality, portable, open source libm implementation
+webpage: https://openlibm.org
+version: 0.8.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/openlibm-0.8.1-macos-10.15-x86_64.tar.xz
+bin-sha: 084158f1e6686f26feaf1fd60dd8515b1fe74ffa62a4f0724773eadc77f133e8

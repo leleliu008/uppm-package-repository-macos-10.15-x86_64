@@ -1,0 +1,5 @@
+summary: Converts a ttyrec file into gif files
+webpage: https://github.com/icholy/ttygif
+version: 1.6.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/ttygif-1.6.0-macos-10.15-x86_64.tar.xz
+bin-sha: 86559a1b6f918caa7419819c2facd9e144ed72a18e03085eb4c88c73457d7f78

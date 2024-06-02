@@ -1,0 +1,5 @@
+summary: A command-line utility to read, write, delete and modify Exif, IPTC, XMP and ICC image metadata
+webpage: https://exiv2.org/
+version: 0.28.2
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/exiv2-0.28.2-macos-10.15-x86_64.tar.xz
+bin-sha: cb33b944fd72157b7eee13fd22b8f5d743c583cae3a82cf63acd7e3f701513bf

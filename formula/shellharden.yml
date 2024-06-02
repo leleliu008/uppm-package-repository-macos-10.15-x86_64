@@ -1,0 +1,5 @@
+summary: A bash syntax highlighter that encourages/fixes variables quoting
+webpage: https://github.com/anordal/shellharden
+version: 4.3.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/shellharden-4.3.1-macos-10.15-x86_64.tar.xz
+bin-sha: 7592972553f5ce119efce685e42f368445ac343b1b3836d32dd51b170026f657

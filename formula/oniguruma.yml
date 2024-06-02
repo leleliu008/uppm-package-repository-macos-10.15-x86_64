@@ -1,0 +1,5 @@
+summary: Regular expressions library
+webpage: https://github.com/kkos/oniguruma
+version: 6.9.9
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/oniguruma-6.9.9-macos-10.15-x86_64.tar.xz
+bin-sha: 0c3efd63a0800bd182be18ebb755597ed05c760e5bafe3060da629179713263d

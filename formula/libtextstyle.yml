@@ -1,0 +1,5 @@
+summary: A C library that provides an easy way to add styling to programs that produce output to a console or terminal emulator window
+webpage: https://www.gnu.org/software/gettext
+version: 0.22.5
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libtextstyle-0.22.5-macos-10.15-x86_64.tar.xz
+bin-sha: afb4ef919154833dea3d13593fb50c0285b3c34e6412675318845818110fafca

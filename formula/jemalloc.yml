@@ -1,0 +1,5 @@
+summary: Implementation of malloc emphasizing fragmentation avoidance
+webpage: https://jemalloc.net
+version: 5.3.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/jemalloc-5.3.0-macos-10.15-x86_64.tar.xz
+bin-sha: 4ef8f2ff43e21b7adcaaff6afeb0b8cffc980a50d154377c76e69737b29a36a8

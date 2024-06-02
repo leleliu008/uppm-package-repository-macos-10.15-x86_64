@@ -1,0 +1,5 @@
+summary: Terminal interaction recorder and player
+webpage: http://0xcc.net/ttyrec
+version: 1.0.8
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/ttyrec-1.0.8-macos-10.15-x86_64.tar.xz
+bin-sha: 37c15889d5c4f56e4859e9811933c60409950e78e0dd485273dbe8c75b937a12

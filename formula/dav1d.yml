@@ -1,0 +1,5 @@
+summary: AV1 decoder targeted to be small and fast
+webpage: https://code.videolan.org/videolan/dav1d
+version: 1.4.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/dav1d-1.4.1-macos-10.15-x86_64.tar.xz
+bin-sha: 244353d6468e6a379589453627d68dbb84975844ddb069c7c190533ed9d5ea4b

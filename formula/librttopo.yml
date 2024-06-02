@@ -1,0 +1,5 @@
+summary: RT Topology Library
+webpage: https://git.osgeo.org/gitea/rttopo/librttopo
+version: 1.1.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/librttopo-1.1.0-macos-10.15-x86_64.tar.xz
+bin-sha: 79b34f64c0058532934c90173701beeb8fcee56b7b85f37b8b4b466e9c872f66

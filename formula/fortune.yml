@@ -1,0 +1,5 @@
+summary: A command-line tool for displaying a random quotation
+webpage: https://github.com/shlomif/fortune-mod
+version: 3.18.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/fortune-3.18.0-macos-10.15-x86_64.tar.xz
+bin-sha: da59915fee4fdd06b25455e36983b611ae6ca3bf7a17295e46cf5497dfea3c92

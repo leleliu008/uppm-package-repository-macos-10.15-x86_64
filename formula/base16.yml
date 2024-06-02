@@ -1,5 +1,5 @@
 summary: base16 encoder and decoder
 webpage: https://github.com/leleliu008/C-examples
-version: 2023.04.07
-bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/base16-2023.04.07-macos10.15-x86_64.tar.xz
-bin-sha: 1969da0044348a5cfa7a2529df7004c52242aa5ee52f3eb860b3287d14767ac4
+version: 2024.06.01
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/base16-2024.06.01-macos-10.15-x86_64.tar.xz
+bin-sha: 6fe7a66d09df76bb6d8bc98cc875b90b0a1ef98fbb6a569312dc5c58d2041fe0

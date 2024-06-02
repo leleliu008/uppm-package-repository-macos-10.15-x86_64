@@ -1,0 +1,5 @@
+summary: A password hashing method based on the Blowfish block cipher, provided via the crypt(3) and a reentrant interface
+webpage: https://www.openwall.com/crypt
+version: 2024.06.01
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libbcrypt-2024.06.01-macos-10.15-x86_64.tar.xz
+bin-sha: 743a3bdf7e7206bafdb72f6a7d2d2bb8329ff7ec3c2c3bd17de5f9a4c36abee4

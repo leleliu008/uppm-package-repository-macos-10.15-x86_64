@@ -1,0 +1,5 @@
+summary: Minimalistic client for Redis
+webpage: https://github.com/redis/hiredis
+version: 1.2.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libhiredis-1.2.0-macos-10.15-x86_64.tar.xz
+bin-sha: dc20d48edb4479a63c80b509f1f563f920f8b572b88ec8b6277246feaf237d38

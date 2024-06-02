@@ -1,0 +1,5 @@
+summary: Asynchronous DNS library
+webpage: https://c-ares.haxx.se
+version: 1.28.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libcares-1.28.1-macos-10.15-x86_64.tar.xz
+bin-sha: bf49b730b743f40e40effd344b698ed7080e8f12442d9fdcd677570d0a1fff0e

@@ -1,0 +1,5 @@
+summary: Cryptographic algorithms and formats library in C++
+webpage: https://botan.randombit.net/
+version: 3.4.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/botan-3.4.0-macos-10.15-x86_64.tar.xz
+bin-sha: 3c098d59dd5b547b6c913e59739eb9c2f5cc0a64f44f0a507de3726a5e23e167

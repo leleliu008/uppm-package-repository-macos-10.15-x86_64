@@ -1,0 +1,5 @@
+summary: ASN.1 structure parser library
+webpage: https://www.gnu.org/software/libtasn1
+version: 4.19.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libtasn1-4.19.0-macos-10.15-x86_64.tar.xz
+bin-sha: 4ce91882d988ea1a04aadade6da61314346a784364765cf56674c72e27a24dd8

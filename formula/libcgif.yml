@@ -1,0 +1,5 @@
+summary: A fast and lightweight GIF encoder written in C
+webpage: https://github.com/dloebl/cgif
+version: V0.3.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libcgif-V0.3.0-macos-10.15-x86_64.tar.xz
+bin-sha: d5a318d4ba44fcdf750e5a51696682be3b311ff9dc4d274387a2154e82eba2ac

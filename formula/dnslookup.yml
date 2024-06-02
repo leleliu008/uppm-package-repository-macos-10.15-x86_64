@@ -1,0 +1,5 @@
+summary: A simple command line utility to make DNS lookups to the specified server
+webpage: https://github.com/ameshkov/dnslookup
+version: 1.10.0
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/dnslookup-1.10.0-macos-10.15-x86_64.tar.xz
+bin-sha: 4f7a2aae5c49985ab3daeaf4d2f265c42229a40201625ef4c1631b237ce12094

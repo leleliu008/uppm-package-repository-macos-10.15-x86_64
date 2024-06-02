@@ -1,0 +1,5 @@
+summary: A collection of a high-performance multi-threaded malloc() implementation, plus some pretty nifty performance analysis tools
+webpage: https://github.com/gperftools/gperftools
+version: 2.15
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/gperftools-2.15-macos-10.15-x86_64.tar.xz
+bin-sha: 59d44279d495f91214cb211cdfa50288ac834219ef642239d111e0dcfaa16ee2

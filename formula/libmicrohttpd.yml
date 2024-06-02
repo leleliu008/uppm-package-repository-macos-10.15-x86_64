@@ -1,0 +1,5 @@
+summary: Light HTTP/1.1 server library
+webpage: https://www.gnu.org/software/libmicrohttpd/
+version: 1.0.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libmicrohttpd-1.0.1-macos-10.15-x86_64.tar.xz
+bin-sha: c308f645eff804c092b4df11dae9fb96ae11f31c91d0e46f063be095964bef44

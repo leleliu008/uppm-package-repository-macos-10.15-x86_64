@@ -1,0 +1,5 @@
+summary: A command-line tool to create modern online books from Markdown files
+webpage: https://rust-lang.github.io/mdBook/
+version: 0.4.40
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/mdbook-0.4.40-macos-10.15-x86_64.tar.xz
+bin-sha: 0f92e6672fd655e4e6ac7886b8daa455cbd896672ef3e8cf8a867bca1112918c

@@ -1,0 +1,5 @@
+summary: X.Org Display Manager Control Protocol library
+webpage: https://www.x.org/
+version: 1.1.4
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/xorg-libxdmcp-1.1.4-macos-10.15-x86_64.tar.xz
+bin-sha: 145c24e24495d0c336b6f485c8c53f2ba56b3f0e558924168b153e2356df7625

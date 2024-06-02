@@ -1,0 +1,5 @@
+summary: Web Assembly Binary Toolkit
+webpage: https://github.com/WebAssembly/wabt
+version: 1.0.35
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/wabt-1.0.35-macos-10.15-x86_64.tar.xz
+bin-sha: de0bc332121d59fe780aa5df9f2417c42465f83b042c9aab4cf01370d74d910b

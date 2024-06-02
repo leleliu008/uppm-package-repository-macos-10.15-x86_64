@@ -1,0 +1,5 @@
+summary: Thai language support library
+webpage: https://linux.thai.net/projects/libthai
+version: 0.1.28
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/libthai-0.1.28-macos-10.15-x86_64.tar.xz
+bin-sha: 3735d1495525de300193adc6209e069eaaa99cfd8b34d9aad9833dd26aed258f

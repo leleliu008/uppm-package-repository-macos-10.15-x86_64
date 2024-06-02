@@ -1,5 +1,5 @@
-summary: Collection of Linux utilities
+summary: A collection of Linux utilities
 webpage: https://github.com/util-linux/util-linux
-version: 2.39.1
-bin-url: https://github.com/leleliu008/uppm-package-repository-macos10.15-x86_64/releases/download/2023.04.07/util-linux-2.39.1-macos10.15-x86_64.tar.xz
-bin-sha: e6875398929b41e2a67c230d9f2f04b578bb746ee74b4b937fd21240c3f0401e
+version: 2.39.3
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/util-linux-2.39.3-macos-10.15-x86_64.tar.xz
+bin-sha: e6efd35f9a18c0a4b9d4b8914c18c6ac90429cad51e0bf6bfc87a46a9ad86e1b

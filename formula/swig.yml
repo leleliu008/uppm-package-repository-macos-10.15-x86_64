@@ -1,0 +1,5 @@
+summary: A command-line tool for generating scripting interfaces to C/C++ code
+webpage: https://www.swig.org/
+version: 4.2.1
+bin-url: https://github.com/leleliu008/uppm-package-repository-macos-10.15-x86_64/releases/download/2024.06.02/swig-4.2.1-macos-10.15-x86_64.tar.xz
+bin-sha: 4a6d049e342efc7fd94e80c6084246f700f758931b0c2f71e11d5d1f0304704e

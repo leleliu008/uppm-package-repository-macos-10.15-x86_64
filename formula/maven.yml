@@ -1,6 +1,13 @@
-summary: A Java-based project management and comprehension tool.
+summary: A Java-based project management and comprehension tool
 webpage: https://maven.apache.org/
-bin-url: https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
-bin-sha: ff66b70c830a38d331d44f6c25a37b582471def9a161c93902bac7bea3098319
-version: 3.9.4
-dep-pkg: jdk17
+bin-url: https://dlcdn.apache.org/maven/maven-3/3.9.12/binaries/apache-maven-3.9.12-bin.tar.gz
+bin-sha: fa2c9948729296c23afd18fd01a90f62cdda09a46191b54a8bc3764c2eee812e
+version: 3.9.12
+dep-pkg: jdk21 gsed
+install: |
+  JDK_INSTALL_DIR="${PKG_INSTALL_DIR%/*}/jdk21"
+
+  for f in bin/mvn bin/mvnDebug bin/mvnyjp
+  do
+    gsed -i "1a export JAVA_HOME='$JDK_INSTALL_DIR'" "$f"
+  done

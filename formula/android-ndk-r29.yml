@@ -1,0 +1,5 @@
+summary: A toolset that lets you implement parts of your Android app in native code
+webpage: https://developer.android.com/ndk
+bin-url: https://dl.google.com/android/repository/android-ndk-r29-darwin.zip
+bin-sha: ce5e4b100ec5fe5be4eb3edcb2c02528824ff9cda3860f5304619be6c3da34d3
+version: r29

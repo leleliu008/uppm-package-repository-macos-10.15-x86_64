@@ -1,8 +1,8 @@
 summary: A Java-based project management and comprehension tool
 webpage: https://maven.apache.org/
-bin-url: https://dlcdn.apache.org/maven/maven-3/3.10.0/binaries/apache-maven-3.10.0-bin.tar.gz
-bin-sha: a46cc51bc74fa23fd267c7a0b9132b146dcf526da60d31aa5174e565632e9e0e
-version: 3.10.0
+bin-url: https://dlcdn.apache.org/maven/maven-3/3.10.1/binaries/apache-maven-3.10.1-bin.tar.gz
+bin-sha: 810b8348f0a40f9116c202093fae007ebeabf67699bf34d81ee7e272289e085a
+version: 3.10.1
 dep-pkg: jdk21 gsed
 install: |
     JDK_INSTALL_DIR="${PKG_INSTALL_DIR%/*}/jdk21"
